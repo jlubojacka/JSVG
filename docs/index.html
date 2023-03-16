@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSVG Demo</title>
+    <script type="text/javascript" src="JSVG/path-parser.js"></script>
+    <script type="text/javascript" src="JSVG/drawables.js"></script>
+    <script type="text/javascript" src="JSVG/svg-parser.js"></script>
+    <script type="text/javascript" src="tiles.js"></script>
+    <style>
+        div{
+            position:relative;
+        }
+        #top{
+            border: 1px solid black;
+            top:0;
+            left:0;
+        }
+        .demo-svg {
+            display: none;
+        }
+        .page__title {
+            text-align: center;
+        }
+        .content {
+            width: fit-content;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <h1 class="page__title">JSVG Demo</h1>
+
+        <div class="content">
+            <canvas id="top" width="700" height="400"></canvas>
+            <p> Pick a color to change color of tiles:</p>
+            <input id="colorPicker" type="color" value="#60ea91" />
+        </div>
+
+        <svg width="450" height="200" id="test" class="demo-svg">
+            <circle cx="100" cy="100" r="50" fill="MidnightBlue" />
+            <line x1="50" y1="50" x2="100" y2="200" stroke="salmon" stroke-width="10" />
+            <g>
+                <polygon points="110,70 250,120 300,220" fill="seagreen" />
+                <rect x="170" y="5" width="100" height="80" fill="orange" rx="10" ry="10" />
+            </g>
+            <ellipse cx="350" cy="100" rx="100" ry="75" fill="skyblue" />
+            <path d="M 10,100 Q 150,100 250,250" stroke="blue" stroke-width="10" fill="none"/>
+        </svg>
+
+        <svg id="tiles" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" class="demo-svg">
+            <g id="default">
+                <rect width="250" height="250" style="fill:#60ea91;opacity:.96;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke:#000"/>
+            </g>
+            <g id="sides">
+                <path d="m0 250h250l50 50h-250z" style="fill:#228344;stroke-linecap:round;stroke-linejoin:round;stroke-width:1px;stroke:#000"/>
+                <path d="m250 0 50 50v250l-50-50z" style="fill:#60ea91;stroke-linecap:round;stroke-linejoin:round;stroke-width:1px;stroke:#000"/>
+            </g>
+            <g id="mark">
+                <path d="m40 125h170" style="fill:#9c001a;stroke-linecap:round;stroke-linejoin:round;stroke-width:35;stroke:#9c001a"/>
+                <path d="m125 40v170" style="fill:#9c001a;stroke-linecap:round;stroke-linejoin:round;stroke-width:35;stroke:#9c001a"/>
+            </g>
+            <g id="to-mark">
+                <path d="m124.74 22.252a17.502 17.502 0 0 0-17.236 17.748v67.5h-67.5a17.502 17.502 0 1 0 0 35h67.5v67.5a17.502 17.502 0 1 0 35 0v-67.5h67.5a17.502 17.502 0 1 0 0-35h-67.5v-67.5a17.502 17.502 0 0 0-17.764-17.748z" style="color-rendering:auto;color:#000000;dominant-baseline:auto;fill:none;font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-padding:0;shape-rendering:auto;solid-color:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:7;stroke:#0e0002;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+            </g>
+            <g id="barrier">
+                <circle cx="125" cy="125" r="25" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m10 10 130 95-35 35z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m34.176 31.753 102.5 80.357-9.6885 10.101z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="131.52" cy="116.88" r="7" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="216.27" cy="128.89" r="18.081" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m133.1 45.714 94.02 68.707-25.313 25.313z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m150.59 61.447 74.131 58.117-7.007 7.3057z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="220.99" cy="123.01" r="5.0626" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="132.78" cy="214.56" r="18.208" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m49.017 130.8 94.684 69.192-25.492 25.492z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m66.625 146.65 74.654 58.527-7.0565 7.3572z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="137.52" cy="208.64" r="5.0983" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="214.9" cy="214.63" r="10.161" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m168.16 167.89 52.838 38.613-14.226 14.226z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m177.98 176.73 41.661 32.661-3.9379 4.1057z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="217.55" cy="211.33" r="2.8451" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="201.63" cy="52.045" r="10.161" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m154.89 5.3033 52.838 38.613-14.226 14.226z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m164.72 14.145 41.661 32.661-3.9379 4.1057z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="204.28" cy="48.743" r="2.8451" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="54.005" cy="190.08" r="10.161" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m7.2628 143.33 52.838 38.613-14.226 14.226z" style="fill:#6a5c32;paint-order:normal"/>
+                <path d="m17.089 152.18 41.661 32.661-3.9379 4.1057z" style="fill:#d1c9b1;paint-order:normal"/>
+                <circle cx="56.654" cy="186.77" r="2.8451" style="fill:#d1c9b1;paint-order:normal"/>
+            </g>
+        </svg>
+    </main>
+
+    <script>
+
+        let tiles = [
+            {row: 0, column: 0, type: "default"},
+            {row: 0, column: 1, type: "barrier"},
+            {row: 0, column: 2, type: "mark"},
+            {row: 1, column: 0, type: "default"},
+            {row: 1, column: 1, type: "blank"},
+            {row: 1, column: 2, type: "default"},
+            {row: 2, column: 0, type: "to-mark"},
+            {row: 2, column: 1, type: "default"},
+            {row: 2, column: 2, type: "default"}
+        ];
+
+        function watchColorChange(event){
+            if (window.jsvg) {
+                console.log("Color change");
+                let color = event.target.value;
+                let darker = darken(color);
+                window.jsvg[0].children[0].fill = color;
+                let sides = window.jsvg[1].children;
+                sides[0].fill = darker;
+                sides[1].fill = color;
+
+                for(let t of tiles){
+                    window.tileHelper.draw(t);
+                }
+            }
+
+        }
+
+        function darken(color) {
+            let amount = -20;
+            let c = color.slice(1); //remove #
+            let colorNum = parseInt(c,16);
+
+            let result = ((colorNum & 0xfefefe) >> 1).toString(16);
+            return "#" + result;
+        }
+
+
+        let canvas = document.querySelector("#top");
+        let ctx = canvas.getContext("2d");
+        ctx.translate(Math.round(canvas.width / 2) + 0.5, Math.round(canvas.height / 2) + 0.5);
+        ctx.rotate(45 * (Math.PI / 180));
+        ctx.transform(1, -23 * Math.PI / 180, -23 * Math.PI / 180, 1, 0, 0);
+        window.ctx = ctx;
+        let svg1 = document.querySelector("#tiles");
+        window.jsvg = traverse(svg1);
+
+        let testSvg = document.querySelector("#test");
+        window.testJsvg = traverse(testSvg);
+
+        let colorPicker = document.querySelector("#colorPicker");
+        colorPicker.addEventListener("change", watchColorChange, false);
+        colorPicker.addEventListener("input", watchColorChange, false);
+
+        let tileHelper = new Tiles(canvas,window.jsvg,3,3);
+        window.draw = function (){ jsvg[1].draw(ctx); jsvg[0].draw(ctx)};
+        window.tileHelper = tileHelper;
+
+        for(let t of tiles){
+            tileHelper.draw(t);
+        }
+    </script>
+
+</body>
+</html>
